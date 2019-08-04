@@ -1,0 +1,34 @@
+swagger: "2.0"
+info:
+  description: provides interfaces to control sensors and actuators
+  version: "1.0.0"
+  title: actuator controller
+
+basePath: /api
+
+# supported endpoints
+paths:
+  /actuators/motor/:
+    put:
+      operationId: "endpoints.actuators.motor_handle_input"
+      summary: "starts or stops a motor"
+      description: "starts or stops a motor"
+      parameters:
+        - name: motor
+          in: body
+          description: "motor payload"
+          required: True
+          schema:
+            type: object
+            properties:
+              id:
+                type: string
+                description: name of the motor
+              action:
+                type: string
+                enum: [start, stop]
+                description: action to be performed
+      responses:
+        201:
+          description: Successfully processed
+
