@@ -1,16 +1,17 @@
 import datetime
 
+from flask import request
+
 DUMMY = {
         "message": "blabla",
         "timestamp": datetime.datetime.now()
 }
 
 
-# handler to list sensors when requested 
-def play_sound():
-    return DUMMY
-
-
 def motor_handle_input():
+    body = request.json
+
+    print(body.get("id"))
+
     return DUMMY
 
