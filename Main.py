@@ -1,11 +1,16 @@
 import datetime
 from flask import Flask
 import connexion
+from sensors.flameDetector import FlameDetector
+
 
 #
 # MMain class to simulate a machine in production
 #
 
+# start the sensors
+flameDetector = FlameDetector(1)
+flameDetector.start()
 
 app = Flask(__name__)
 
@@ -28,3 +33,6 @@ def get_date_time_string():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
